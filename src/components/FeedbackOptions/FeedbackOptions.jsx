@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ButtonSet, Button } from './FeedbackOptions.styled.js';
 
 const FeedbackOptions = ({ optionsKey, onLeaveFeedback }) => (
@@ -14,5 +15,13 @@ const FeedbackOptions = ({ optionsKey, onLeaveFeedback }) => (
     ))}
   </ButtonSet>
 );
+
+FeedbackOptions.propTypes = {
+  optionsKey: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default FeedbackOptions;

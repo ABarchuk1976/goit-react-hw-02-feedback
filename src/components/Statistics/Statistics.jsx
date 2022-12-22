@@ -1,14 +1,13 @@
 import { StatisticsItem } from './Statistics.styled';
+import PropTypes from 'prop-types';
 import Notification from 'components/Notification';
 
-const Statistics = props => {
-  const {
-    optionsKey,
-    optionsValue,
-    countTotalFeedback,
-    countPositiveFeedbackPercentage,
-  } = props;
-
+const Statistics = ({
+  optionsKey,
+  optionsValue,
+  countTotalFeedback,
+  countPositiveFeedbackPercentage,
+}) => {
   const notEmpty = !!optionsValue.reduce((acc, value) => acc + value, 0);
 
   const total = countTotalFeedback();
@@ -27,6 +26,13 @@ const Statistics = props => {
   ) : (
     <Notification message="There is no feedback" />
   );
+};
+
+Statistics.propTypes = {
+  optionsKey: PropTypes.arrayOf(PropTypes.string).isRequired,
+  optionsValue: PropTypes.arrayOf(PropTypes.number).isRequired,
+  countTotalFeedback: PropTypes.func.isRequired,
+  countPositiveFeedbackPercentage: PropTypes.func.isRequired,
 };
 
 export default Statistics;
