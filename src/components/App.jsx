@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
 
 class App extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    optionsKey: PropTypes.arrayOf(PropTypes.string).isRequired,
-    optionsValue: PropTypes.arrayOf(PropTypes.number).isRequired,
-    onLeaveFeedback: PropTypes.func.isRequired,
-    countTotalFeedback: PropTypes.func.isRequired,
-    countPositiveFeedbackPercentage: PropTypes.func.isRequired,
-  };
-
   state = {
     good: 0,
     neutral: 0,

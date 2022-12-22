@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const StatisticsItem = styled.li`
@@ -7,3 +8,7 @@ export const StatisticsItem = styled.li`
     margin-bottom: 0;
   }
 `;
+
+StatisticsItem.propTypes = {
+  key: PropTypes.string.isRequired,
+};
