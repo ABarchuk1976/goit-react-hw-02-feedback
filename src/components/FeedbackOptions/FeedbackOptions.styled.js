@@ -25,7 +25,6 @@ export const ButtonSet = styled.div`
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
-  key: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
