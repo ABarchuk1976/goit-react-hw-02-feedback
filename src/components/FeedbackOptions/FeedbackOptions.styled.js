@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const Button = styled.button`
@@ -22,9 +21,3 @@ export const ButtonSet = styled.div`
   display: inline-flex;
   align-items: center;
 `;
-
-Button.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
