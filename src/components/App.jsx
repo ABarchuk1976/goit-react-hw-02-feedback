@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
+import Notification from 'components/Notification';
 
 class App extends Component {
   state = {
@@ -28,20 +29,23 @@ class App extends Component {
   };
 
   render() {
-    const thisState = this.state;
+    const { good, neutral, bad } = this.state;
+    const isEmptyList = !(good + neutral + bad);
 
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            optionsKey={Object.keys(thisState)}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
         <Section title="Statistics">
+          {isEmptyList && <Notification message="There is no feedback" />}
           <Statistics
-            optionsKey={Object.keys(thisState)}
-            optionsValue={Object.values(thisState)}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             countTotalFeedback={this.countTotalFeedback}
             countPositiveFeedbackPercentage={
               this.countPositiveFeedbackPercentage

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { ButtonSet, Button } from './FeedbackOptions.styled.js';
 
-const FeedbackOptions = ({ optionsKey, onLeaveFeedback }) => (
+const FeedbackOptions = ({ options, onLeaveFeedback }) => (
   <ButtonSet>
-    {optionsKey.map(option => (
+    {options.map(option => (
       <Button
         name={option}
         key={option}
@@ -17,14 +17,8 @@ const FeedbackOptions = ({ optionsKey, onLeaveFeedback }) => (
 );
 
 FeedbackOptions.propTypes = {
-  optionsKey: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
-};
-
-Button.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;

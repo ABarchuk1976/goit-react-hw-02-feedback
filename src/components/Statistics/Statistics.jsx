@@ -1,36 +1,34 @@
 import { StatisticsItem } from './Statistics.styled';
 import PropTypes from 'prop-types';
-import Notification from 'components/Notification';
 
 const Statistics = ({
-  optionsKey,
-  optionsValue,
+  good,
+  neutral,
+  bad,
   countTotalFeedback,
   countPositiveFeedbackPercentage,
 }) => {
-  const notEmpty = !!optionsValue.reduce((acc, value) => acc + value, 0);
+  const isEmpty = !(good + neutral + bad);
+  if (isEmpty) return;
 
   const total = countTotalFeedback();
   const percentageGood = countPositiveFeedbackPercentage();
 
-  return notEmpty ? (
+  return (
     <ul>
-      {optionsKey.map((option, idx) => (
-        <StatisticsItem key={option}>
-          {option[0].toUpperCase() + option.substring(1)}: {optionsValue[idx]}
-        </StatisticsItem>
-      ))}
+      <StatisticsItem>Good: {good}</StatisticsItem>
+      <StatisticsItem>Neutral: {neutral}</StatisticsItem>
+      <StatisticsItem>Bad: {bad}</StatisticsItem>
       <StatisticsItem>Total feedbacks: {total}</StatisticsItem>
       <StatisticsItem>Positive feedbacks: {percentageGood} </StatisticsItem>
     </ul>
-  ) : (
-    <Notification message="There is no feedback" />
   );
 };
 
 Statistics.propTypes = {
-  optionsKey: PropTypes.arrayOf(PropTypes.string).isRequired,
-  optionsValue: PropTypes.arrayOf(PropTypes.number).isRequired,
+  good: PropTypes.PropTypes.number.isRequired,
+  neutral: PropTypes.PropTypes.number.isRequired,
+  bad: PropTypes.PropTypes.number.isRequired,
   countTotalFeedback: PropTypes.func.isRequired,
   countPositiveFeedbackPercentage: PropTypes.func.isRequired,
 };
