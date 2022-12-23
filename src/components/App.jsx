@@ -30,6 +30,8 @@ class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
     const isEmptyList = !(good + neutral + bad);
 
     return (
@@ -46,10 +48,8 @@ class App extends Component {
             good={good}
             neutral={neutral}
             bad={bad}
-            countTotalFeedback={this.countTotalFeedback}
-            countPositiveFeedbackPercentage={
-              this.countPositiveFeedbackPercentage
-            }
+            total={total}
+            positivePercentage={positivePercentage}
           />
         </Section>
       </>
